@@ -5,8 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kulečník v Javascriptu</title>
+    <style>
+        body { background: #F0A28E; text-align: center; box-sizing: content-box;}
+        canvas { border: 20px solid #BA6476; margin-top: 50px; border-radius: 30px;}
+    </style>
 </head>
 <body>
-    
+    <canvas width="800" height="550"></canvas>
+    <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // variables
+        colorPool = '#F5D7A1';
+
+        ctx.fillStyle = colorPool;
+        ctx.fillRect(0,0, canvas.width, canvas.height);
+        
+
+    </script>
 </body>
 </html>
