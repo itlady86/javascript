@@ -15,13 +15,38 @@
     <script>
         const canvas = document.querySelector('canvas');
         const ctx = canvas.getContext('2d');
+        const radius = 50;
+
 
         // variables
         colorPool = '#F5D7A1';
+        colorBall1 = '#1B2A49';
+        colorBall2 = '465881';
+        colorBall3 = '00909E';
+        colorBall4 = 'C9D1D3';
+        colorBallStroke = '191919';
 
+
+        var centerX = canvas.width/2;
+        var centerY = canvas.height/2;
+
+        // background pool
         ctx.fillStyle = colorPool;
         ctx.fillRect(0,0, canvas.width, canvas.height);
         
+        // ball
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, 2*Math.PI);
+        ctx.fillStyle = colorBall1;
+        ctx.fill();
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = colorBallStroke;
+        ctx.stroke();
+
+        
+        
+
+
 
     </script>
 </body>
