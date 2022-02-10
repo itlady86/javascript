@@ -6,46 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kulečník v Javascriptu</title>
     <style>
-        body { background: #F0A28E; text-align: center; box-sizing: content-box;}
+        body { background: #F0A28E; text-align: center; }
         canvas { border: 20px solid #BA6476; margin-top: 50px; border-radius: 30px;}
     </style>
 </head>
 <body>
     <canvas width="800" height="550"></canvas>
     <script>
+        //canvas
         const canvas = document.querySelector('canvas');
         const ctx = canvas.getContext('2d');
-        const radius = 50;
-
-
-        // variables
-        colorPool = '#F5D7A1';
-        colorBall1 = '#1B2A49';
-        colorBall2 = '465881';
-        colorBall3 = '00909E';
-        colorBall4 = 'C9D1D3';
-        colorBallStroke = '191919';
-
-
-        var centerX = canvas.width/2;
-        var centerY = canvas.height/2;
-
-        // background pool
-        ctx.fillStyle = colorPool;
-        ctx.fillRect(0,0, canvas.width, canvas.height);
+        const radiusGap = 40;
         
-        // ball
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, radius, 0, 2*Math.PI);
-        ctx.fillStyle = colorBall1;
-        ctx.fill();
-        ctx.lineWidth = 5;
-        ctx.strokeStyle = colorBallStroke;
-        ctx.stroke();
+        //ball
+        const rad = 35;
+        var X = canvas.width/2;
+        var Y = canvas.height/2;
+        var speed = 5;
+        var lineWidth = 5;
+
+        // colors
+        var colorPool = '#F5D7A1';
+        var colorBall1 = '#1B2A49';
+        var colorBall2 = '#465881';
+        var colorBall3 = '#00909E';
+        var colorBall4 = '#C9D1D3';
+        var colorBallStroke = '#191919';
+
+
+        //loop
+        function gameLoop() {
+            moveStuff();
+            drawStuff();
+            
+            requestAnimationFrame(gameLoop);
+        }
+
+        gameLoop();
+
+
+        /*** POHYB OBJEKTŮ ***/
+        function moveStuff(){
+           // X += speed;
+            if (X >= canvas.width - rad) {
+                X = rad/2;
+            }
+
+
+        }
+        /*** VYKRESLOVÁNÍ OBJEKTŮ ***/
+        function drawStuff(){
+            drawBackground();
+            drawBall(X, Y, rad, colorBall2, colorBallStroke);
+        }
+
+        function drawBackground() {
+            ctx.fillStyle = colorPool;
+            ctx.fillRect(0,0, canvas.width, canvas.height);
+        }
 
         
+        function drawBall(x, y, radius, fillColor, lineColor) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, 2*Math.PI);
+            ctx.fillStyle = fillColor;
+            ctx.fill();
+            ctx.lineWidth = lineWidth;
+            ctx.strokeStyle = lineColor;
+            ctx.stroke();
+        }
         
-
+        
+        
 
 
     </script>
